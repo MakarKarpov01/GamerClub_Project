@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'forum.apps.ForumConfig',
 ]
 
 MIDDLEWARE = [
@@ -115,3 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Хендлеры ошибок
+HANDLERS_404_VIEW = "django.views.defaults.page_not_found"
+HANDLER_500_VIEW = "forum.views.error_500"  # Используем нашу кастомную ошибку

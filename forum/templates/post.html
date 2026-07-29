@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!-- Подключим Bootstrap для красоты -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4"> <!-- Контейнер для центрирования контента -->
+
+<div class="card-header text-center bg-light">
+    {{ post.created_at|date:"d.m.Y H:i" }} ● Автор: 
+    
+    {% if post.author %}
+        {# Ссылка на профиль пользователя (пока не реализовано) #}
+        {# <a href="{% url 'forum:user_posts' post.author.id %}">{{ post.author }}</a> #}
+    {% else %}
+        Неизвестный автор
+    {% endif %}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        
+        <!-- Показываем весь контент без обрезки -->
+        <p class="card-text">{{ post.content|safe }}</p>
+
+        <!-- Добавляем кнопку возврата на главную страницу -->
+        <a href="{% url 'forum:index' %}" class="btn btn-primary">Вернуться к списку сообщений</a>
+    </div>
+</div>
+
+</body>
+</html>
